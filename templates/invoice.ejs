@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Invoice</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <style>
+      body { font-family: Inter, sans-serif; background: #F0F3F4;}
+      h1 { color: #333; font-family: "DM Serif Display"; }
+      #container {
+        width: 700px;
+        margin: 0 auto;
+      }
+      table.heading, table.heading th, table.heading td {
+        border: none;
+        border-collapse: collapse;
+      }
+      table.heading th, table.heading td {
+        width: 50%;
+      }
+      table.heading td.head {
+        text-align: right;
+      }
+      #logo {
+        width: 200px;
+      }
+      .invoice-header {
+        font-size: 54px;
+      }
+      table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+      th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+      th { background-color: #f4f4f4; }
+      .total { font-size: 1.2em; font-weight: bold; font-family: Poppins; }
+
+      h3.bill {
+        font-family: Poppins;
+        padding: 0; margin: 0;
+      }
+
+      table.detail td, table.detail th {
+        border-left: none;
+        border-right: none;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 16px;
+      }
+      table.detail th {
+        background: none;
+        background-color: transparent;
+        font-family: Poppins;
+      }
+      .align-left {
+        text-align: left;
+      }
+      .align-center {
+        text-align: center;
+      }
+      .align-right {
+        text-align: right;
+      }
+      .poppins {
+        font-family: Poppins;
+      }
+      .vertical-top {
+        vertical-align: top;
+      }
+
+      table.clear-border, table.clear-border th, table.clear-border td {
+        border: none;
+        border-collapse: collapse;
+      }
+  </style>
+</head>
+<body>  
+  <div id="container">
+    <table class="heading">
+      <tr>
+        <td><img src="<%= logo %>"" id="logo" /></td>
+        <td class="head"><h1 class="invoice-header">INVOICE</h1></td>
+      </tr>
+      <tr>
+        <td class="vertical-top"><h3 class="bill">BILLED TO:</h3><br /><%= customerName %></td>
+        <td class="head vertical-top">Invoice <strong class="poppins">#<%= invoiceNo %></strong><br /><%= date %></td>
+      </tr>
+    </table>
+    <table class="detail">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th class="align-center">Quantity</th>
+          <th class="align-center">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% items.forEach(item => { %>
+          <tr>
+            <td><%= item.name %></td>
+            <td class="align-center"><%= item.qty %></td>
+            <td class="align-center"><%= item.price %></td>
+          </tr>
+        <% }) %>
+        <tr>
+          <td class="total align-right" colspan="2">Total</td>
+          <td class="total align-center"><%= total %></td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="clear-border">
+      <tr>
+        <td class="vertical-top">
+          <strong class="poppins">PAYMENT INFORMATION:</strong><br /><br />
+          <% paymentInfo.forEach(item => {%> 
+          <%= item %> <br />  
+          <%}) %>
+        </td>
+        <td class="align-center">
+          <h2>Thank You!</h2>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
