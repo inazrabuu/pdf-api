@@ -10,6 +10,12 @@ app.use(express.json())
 
 app.use('/public', express.static(path.join(__dirname, 'public')))
 
+app.get('/', (req, res) => {
+  res.json({
+    message: 'PDF API'
+  })
+})
+
 app.post('/generate-invoice', async (req, res) => {
   let { invoiceNo, customerName, date, items, total, paymentInfo } = req.body
 
