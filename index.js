@@ -35,6 +35,8 @@ app.post('/generate-invoice', async (req, res) => {
     const template = path.join(__dirname, 'templates', 'invoice.ejs')
     const html = await ejs.renderFile(template, {logo, customerName, invoiceNo, date, total, items, paymentInfo})
 
+    console.log('Executable path:', puppeteer.executablePath())
+
     const browser = await puppeteer.launch({
       headless: true,
       args: ['--no-sandbox', '--disable-setuid-sandbox']
