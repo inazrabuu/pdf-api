@@ -1,7 +1,6 @@
 const fs = require('fs')
 const express = require('express')
-const chromium = require('chrome-aws-lambda')
-const puppeteer = require('puppeteer-core')
+const puppeteer = require('puppeteer')
 const ejs = require('ejs')
 const path = require('path')
 const moment = require('moment')
@@ -36,12 +35,9 @@ app.post('/generate-invoice', async (req, res) => {
     const template = path.join(__dirname, 'templates', 'invoice.ejs')
     const html = await ejs.renderFile(template, {logo, customerName, invoiceNo, date, total, items, paymentInfo})
 
-    console.log('Executable path:', await chromium.executablePath)
-
     const browser = await puppeteer.launch({
-      executablePath: await chromium.executablePath,
-      headless: chromium.headless,
-      args: chromium.args
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
     })
     const page = await browser.newPage()
     await page.setContent(html, { waitUntil: 'networkidle0' })
