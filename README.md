@@ -67,7 +67,7 @@ Content-Disposition: attachment; filename=invoice-000000034.pdf
 ## Features
 
 - Auto-Generated PDF Invoices. Create ready-to-print invoices in seconds.
-- Fast & Stateless. No storage or database required — PDFs are generated on the fly.
+- Fast & Stateless. No storage or database required, PDFs are generated on the fly.
 - Clean JSON Interface. Simple, well-structured input for easy integration with any app or backend.
 - Customizable Templates. Modify the layout, colors, and typography with minimal effort.
 - Secure & Lightweight. Input validation and rate limiting ensure stability in public environments.
