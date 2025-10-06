@@ -36,6 +36,7 @@ Built with **Node.js** and **Express**, it’s fast, simple, and easy to integra
     "Vladimir Putin"
   ]
 }
+```
 
 Example cURL
 ```bash
@@ -55,7 +56,7 @@ curl -X POST https://api.example.com/invoice \
       "Mandiri 1234567890",
       "Vladimir Putin"
     ]
-  }' --output invoice.pdf
+  }' --output invoice-000000034.pdf
 ```
 Response
 ```bash
